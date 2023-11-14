@@ -2,7 +2,7 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>Movie Site</title>
+    <title>Stroke Prediction</title>
   
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
@@ -18,7 +18,7 @@
   
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">Movies</a>
+      <a class="navbar-brand" href="/">Project 4</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -45,7 +45,7 @@
   
   <div class="container">
   
-    <h2>US Housing Analysis</h2>
+    <h2>Stroke Predictor</h2>
     <hr>
 
     <div class="row" >
@@ -53,19 +53,22 @@
 
         <form method="POST" action="/model" role="form", name="petform">
 
-          <label for="rooms">Number of Total Rooms:</label>
+          <label for="rooms">Gender:</label>
           <br>
   
-          <select name="rooms" id="rooms">
-            <option value="5"">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10+</option>
+          <select name="gender" id="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
           </select>     
           
           <br><br>
+
+          <div class="form-group">
+              <label for="inputLat">Age</label>
+              <input type="text" class="form-control" id="inputAge" name="age" placeholder="Age">
+          </div>
+
+          <br>
 
           <label for="rooms">Number of Bedrooms:</label>
           <br>
@@ -83,11 +86,6 @@
           <div class="form-group">
               <label for="inputName">Area Income</label>
               <input type="text" class="form-control" id="inputIncome" name="income" placeholder="Income">
-          </div>
-          <br>
-          <div class="form-group">
-              <label for="inputLat">Housing Age</label>
-              <input type="text" class="form-control" id="inputAge" name="age" placeholder="Age">
           </div>
 
           <br>
