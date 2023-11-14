@@ -29,7 +29,7 @@
           </li>
             
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/analysis">Analysis</a>
+            <a class="nav-link active" aria-current="page" href="/heart_stroke_prediction">Heart Stroke Prediction</a>
           </li>
   
           <li class="nav-item">
@@ -74,8 +74,8 @@
           <br>
 
           <select name="hypertension" id="hypertension">
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
           </select>     
           
           <br><br>
@@ -84,8 +84,8 @@
           <br>
 
           <select name="heart-disease" id="heart-disease">
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
           </select> 
 
           <br><br>
@@ -158,7 +158,7 @@
 
         {% if prediction %} 
           <div class="prediction">
-            Your predicted price is: {{prediction}}
+            Are you likely to have a stroke? {{prediction}}
           </div>
         {% endif %}
 

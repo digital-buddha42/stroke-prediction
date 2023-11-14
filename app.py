@@ -44,9 +44,9 @@ def data():
 
     return render_template("data.html")
 
-@app.route("/analysis")
-def actors():
-    return render_template("analysis.html")
+@app.route("/heart_stroke_prediction")
+def stroke():
+    return render_template("heart_stroke_prediction.html")
 
 # ---------------------------------------------------------
 # Machine Learning inputs
@@ -193,7 +193,7 @@ def predict_heart_stroke():
     gender = int(request.form["gender"])
 
     # Load the trained heart stroke prediction model
-    filename = './data/model.sav' # Replace model with actual file name
+    filename = './models/svm_model.sav' # Replace model with actual file name
     loaded_model = pickle.load(open(filename, 'rb'))
 
     # Create a feature vector for prediction
@@ -202,8 +202,10 @@ def predict_heart_stroke():
     # Make the prediction
     prediction = loaded_model.predict(X)[0]
 
+    print(X)
+
     print(prediction)
-    
+
     return render_template("heart_stroke_prediction.html", prediction=prediction)
 
 if __name__ == "__main__":
