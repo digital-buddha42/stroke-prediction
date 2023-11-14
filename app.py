@@ -72,7 +72,7 @@ def model():
         population = 36000
     population = float(population)
 
-    prediction = 0
+    #prediction = 0
 
     X = [[income, age, rooms, bedrooms, population]]
 
@@ -81,13 +81,13 @@ def model():
     filename = './data/housing.sav'
     loaded_model = pickle.load(open(filename, 'rb'))
 
-    prediction = loaded_model.predict(X)[0][0]
+    #prediction = loaded_model.predict(X)[0][0]
 
-    prediction = "${0:,.2f}".format(prediction)
+    #prediction = "${0:,.2f}".format(prediction)
 
-    print(prediction)
+    #print(prediction)
 
-    return render_template("analysis.html", prediction = prediction)
+    #return render_template("analysis.html", prediction = prediction)
 
 # ---------------------------------------------------------
 # API
@@ -174,6 +174,37 @@ def directors(director):
     session.close()
 
     return jsonify(director_results)
+
+@app.route("/predict_heart_stroke", methods=["POST"])
+def predict_heart_stroke():
+
+    # Get the input values from the form
+    age = float(request.form["age"])
+    avg_glucose_level = float(request.form["avg_glucose_level"])
+    bmi = float(request.form["bmi"])
+
+    # smoking status is a binary variable 1 or 0 for either yes or no
+    smoking_status = int(request.form["smoking_status"])
+
+    # hypertension is a binary variable 1 or 0 for either yes or no
+    hypertension = int(request.form["hypertension"])
+
+    # gender is a binary variable 1 o 0 for either male or female
+    gender = int(request.form["gender"])
+
+    # Load the trained heart stroke prediction model
+    filename = './data/model.sav' # Replace model with actual file name
+    loaded_model = pickle.load(open(filename, 'rb'))
+
+    # Create a feature vector for prediction
+    X = [[age, avg_glucose_level, bmi, smoking_status, hypertension, gender]]
+
+    # Make the prediction
+    prediction = loaded_model.predict(X)[0]
+
+    print(prediction)
+    
+    return render_template("heart_stroke_prediction.html", prediction=prediction)
 
 if __name__ == "__main__":
     app.run()
