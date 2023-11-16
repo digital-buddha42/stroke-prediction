@@ -202,8 +202,6 @@ def predict_heart_stroke():
     # Make the prediction
     prediction = loaded_model.predict(X)[0]
 
-    print(X)
-
     print(prediction)
 
     return render_template("heart_stroke_prediction.html", prediction=prediction)
