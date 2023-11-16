@@ -141,6 +141,8 @@ def directors(director):
 @app.route("/model", methods=["POST"])
 def predict_heart_stroke():
     print('test')
+
+    unnamed = 0
     # Get the input values from the form
     age = float(request.form["age"])
 
@@ -175,16 +177,16 @@ def predict_heart_stroke():
     work_type_private = 1 if work_type == 'private' else 0
     work_type_self_employed = 1 if work_type == 'self-employed' else 0
 
-    residence = (request.form["residence-type"])
+    residence_type = (request.form["residence-type"])
 
     residence_type_rural = 1 if residence_type == 'rural' else 0
     residence_type_urban = 1 if residence_type == 'urban' else 0
 
     # smoking status is a binary variable 1 or 0 for either yes or no
-    smoking_status = float(request.form["smoking_status"])
+    smoking_status = (request.form["smoking_status"])
 
-    smoking_status_formerly_smoked = 1 if smoking_status == 'formerly_smoked' else 0
-    smoking_status_never_smoked = 1 if smoking_status == 'never_smoked' else 0
+    smoking_status_formerly_smoked = 1 if smoking_status == 'formerly-smoked' else 0
+    smoking_status_never_smoked = 1 if smoking_status == 'never-smoked' else 0
     smoking_status_smokes = 1 if smoking_status == 'smokes' else 0
     smoking_status_unknown = 1 if smoking_status == 'unknown' else 0
 
@@ -195,18 +197,18 @@ def predict_heart_stroke():
     X = [[unnamed, age, hypertension, heart_disease, avg_glucose_level, bmi, gender_f, gender_m, gender_o, 
         ever_married_no, ever_married_yes, work_type_never_worked, work_type_private, work_type_government_job, 
         work_type_self_employed, work_type_children, 
-        residence_type_rural, esidence_type_urban, smoking_status_formerly_smoked, smoking_status_never_smoked, 
+        residence_type_rural, residence_type_urban, smoking_status_formerly_smoked, smoking_status_never_smoked, 
         smoking_status_smokes, smoking_status_unknown]]
     
     print(X)
 
     # Load the trained heart stroke prediction model
-    filename = './models/svm_model.sav' # Replace model with actual file name
+    filename = './models/svm_model (2).sav' # Replace model with actual file name
     loaded_model = pickle.load(open(filename, 'rb'))
 
   
     # Make the prediction
-    prediction = loaded_model.predict(X)[0][0]
+    prediction = loaded_model.predict(X)[0]
 
     prediction = "${0:,.2f}".format(prediction)
 
