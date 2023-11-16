@@ -51,43 +51,6 @@ def stroke():
 # ---------------------------------------------------------
 # Machine Learning inputs
 
-@app.route("/model" , methods=["POST"])
-def model():
-
-    rooms = float(request.form["rooms"])
-    bedrooms = float(request.form["bedrooms"])
-
-    income = request.form["income"]
-    if income == "":
-        income = 68000
-    income = float(income)
-
-    age = request.form["age"]
-    if age == "":
-        age = 6
-    age = float(age)
-
-    population = request.form["population"]
-    if population == "":
-        population = 36000
-    population = float(population)
-
-    #prediction = 0
-
-    X = [[income, age, rooms, bedrooms, population]]
-
-    print(X)
-
-    filename = './data/housing.sav'
-    loaded_model = pickle.load(open(filename, 'rb'))
-
-    #prediction = loaded_model.predict(X)[0][0]
-
-    #prediction = "${0:,.2f}".format(prediction)
-
-    #print(prediction)
-
-    #return render_template("analysis.html", prediction = prediction)
 
 # ---------------------------------------------------------
 # API
@@ -177,7 +140,7 @@ def directors(director):
 
 @app.route("/model", methods=["POST"])
 def predict_heart_stroke():
-
+    print('test')
     # Get the input values from the form
     age = float(request.form["age"])
 
@@ -192,23 +155,48 @@ def predict_heart_stroke():
     bmi = float(request.form["bmi"])
 
     # gender is a binary variable 1 o 0 for either male or female
-    gender = float(request.form["gender"])
+     # Map categorical features to binary values
+    gender = request.form["gender"]
+    
+    gender_m = 1 if gender == 'Male' else 0
+    gender_f = 1 if gender == 'Female' else 0
+    gender_o = 1 if gender == 'Other' else 0
 
-    married = float(request.form["ever-married"])
+    ever_married = request.form["ever-married"]
 
-    work = float(request.form["work-type"])
+    ever_married_yes = 1 if ever_married == 'Yes' else 0
+    ever_married_no = 1 if ever_married == 'No' else 0
 
-    residence = float(request.form["residence-type"])
+    work_type = request.form["work-type"]
+    
+    work_type_children = 1 if work_type == 'children' else 0
+    work_type_government_job = 1 if work_type == 'government-job' else 0
+    work_type_never_worked = 1 if work_type == 'never-worked' else 0
+    work_type_private = 1 if work_type == 'private' else 0
+    work_type_self_employed = 1 if work_type == 'self-employed' else 0
+
+    residence = (request.form["residence-type"])
+
+    residence_type_rural = 1 if residence_type == 'rural' else 0
+    residence_type_urban = 1 if residence_type == 'urban' else 0
 
     # smoking status is a binary variable 1 or 0 for either yes or no
     smoking_status = float(request.form["smoking_status"])
+
+    smoking_status_formerly_smoked = 1 if smoking_status == 'formerly_smoked' else 0
+    smoking_status_never_smoked = 1 if smoking_status == 'never_smoked' else 0
+    smoking_status_smokes = 1 if smoking_status == 'smokes' else 0
+    smoking_status_unknown = 1 if smoking_status == 'unknown' else 0
 
    
     prediction = 0 
 
     # Create a feature vector for prediction
-    X = [[unnamed, age, hypertension, heart_disease, avg_glucose_level, bmi, gender-f, gender-m, gender-o, married-no, married-y, work-never, work-private,
-           work-self, work-children, residence-rural, residence-urban, smoking-former, smoking-never, smokes, smoking-unknown]]
+    X = [[unnamed, age, hypertension, heart_disease, avg_glucose_level, bmi, gender_f, gender_m, gender_o, 
+        ever_married_no, ever_married_yes, work_type_never_worked, work_type_private, work_type_government_job, 
+        work_type_self_employed, work_type_children, 
+        residence_type_rural, esidence_type_urban, smoking_status_formerly_smoked, smoking_status_never_smoked, 
+        smoking_status_smokes, smoking_status_unknown]]
     
     print(X)
 
@@ -216,16 +204,14 @@ def predict_heart_stroke():
     filename = './models/svm_model.sav' # Replace model with actual file name
     loaded_model = pickle.load(open(filename, 'rb'))
 
-    
-
-
-    
+  
     # Make the prediction
     prediction = loaded_model.predict(X)[0][0]
 
     prediction = "${0:,.2f}".format(prediction)
 
     print(prediction)
+ 
 
     return render_template("heart_stroke_prediction.html", prediction=prediction)
 
