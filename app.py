@@ -175,32 +175,55 @@ def directors(director):
 
     return jsonify(director_results)
 
-@app.route("/predict_heart_stroke", methods=["POST"])
+@app.route("/model", methods=["POST"])
 def predict_heart_stroke():
 
     # Get the input values from the form
     age = float(request.form["age"])
+
+     # hypertension is a binary variable 1 or 0 for either yes or no
+    hypertension = float(request.form["hypertension"])
+
+    # heart disease is a binary variable, 1 for yes, 0 for no
+    heart_disease = float(request.form["heart-disease"])
+
     avg_glucose_level = float(request.form["avg_glucose_level"])
+
     bmi = float(request.form["bmi"])
 
-    # smoking status is a binary variable 1 or 0 for either yes or no
-    smoking_status = int(request.form["smoking_status"])
-
-    # hypertension is a binary variable 1 or 0 for either yes or no
-    hypertension = int(request.form["hypertension"])
-
     # gender is a binary variable 1 o 0 for either male or female
-    gender = int(request.form["gender"])
+    gender = float(request.form["gender"])
+
+    married = float(request.form["ever-married"])
+
+    work = float(request.form["work-type"])
+
+    residence = float(request.form["residence-type"])
+
+    # smoking status is a binary variable 1 or 0 for either yes or no
+    smoking_status = float(request.form["smoking_status"])
+
+   
+    prediction = 0 
+
+    # Create a feature vector for prediction
+    X = [[unnamed, age, hypertension, heart_disease, avg_glucose_level, bmi, gender-f, gender-m, gender-o, married-no, married-y, work-never, work-private,
+           work-self, work-children, residence-rural, residence-urban, smoking-former, smoking-never, smokes, smoking-unknown]]
+    
+    print(X)
 
     # Load the trained heart stroke prediction model
     filename = './models/svm_model.sav' # Replace model with actual file name
     loaded_model = pickle.load(open(filename, 'rb'))
 
-    # Create a feature vector for prediction
-    X = [[age, avg_glucose_level, bmi, smoking_status, hypertension, gender]]
+    
 
+
+    
     # Make the prediction
-    prediction = loaded_model.predict(X)[0]
+    prediction = loaded_model.predict(X)[0][0]
+
+    prediction = "${0:,.2f}".format(prediction)
 
     print(prediction)
 
