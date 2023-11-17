@@ -159,34 +159,35 @@ def predict_heart_stroke():
     gender = request.form["gender"]
     
     gender_m = float(1 if gender == 'Male' else 0)
-    gender_f = 1 if gender == 'Female' else 0
-    gender_o = 1 if gender == 'Other' else 0
+    gender_f = float(1 if gender == 'Female' else 0)
+    gender_o = float(1 if gender == 'Other' else 0)
 
     ever_married = request.form["ever-married"]
 
-    ever_married_yes = 1 if ever_married == 'yes' else 0
-    ever_married_no = 1 if ever_married == 'no' else 0
+    ever_married_yes = float(1 if ever_married == 'yes' else 0)
+    ever_married_no = float(1 if ever_married == 'no' else 0)
 
     work_type = request.form["work-type"]
     
-    work_type_children = 1 if work_type == 'children' else 0
-    work_type_government_job = 1 if work_type == 'government-job' else 0
-    work_type_never_worked = 1 if work_type == 'never-worked' else 0
-    work_type_private = 1 if work_type == 'private' else 0
-    work_type_self_employed = 1 if work_type == 'self-employed' else 0
+    work_type_children = float(1 if work_type == 'children' else 0)
+    work_type_government_job = float(1 if work_type == 'government-job' else 0)
+    work_type_never_worked = float(1 if work_type == 'never-worked' else 0)
+    work_type_private = float(1 if work_type == 'private' else 0)
+    work_type_self_employed = float(1 if work_type == 'self-employed' else 0)
 
     residence_type = (request.form["residence-type"])
 
-    residence_type_rural = 1 if residence_type == 'rural' else 0
-    residence_type_urban = 1 if residence_type == 'urban' else 0
+    residence_type_rural = float(1 if residence_type == 'rural' else 0)
+    residence_type_urban = float(1 if residence_type == 'urban' else 0)
+
 
     # smoking status is a binary variable 1 or 0 for either yes or no
     smoking_status = (request.form["smoking_status"])
 
-    smoking_status_formerly_smoked = 1 if smoking_status == 'formerly-smoked' else 0
-    smoking_status_never_smoked = 1 if smoking_status == 'never-smoked' else 0
-    smoking_status_smokes = 1 if smoking_status == 'smokes' else 0
-    smoking_status_unknown = 1 if smoking_status == 'unknown' else 0
+    smoking_status_formerly_smoked = float(1 if smoking_status == 'formerly-smoked' else 0)
+    smoking_status_never_smoked = float(1 if smoking_status == 'never-smoked' else 0)
+    smoking_status_smokes = float(1 if smoking_status == 'smokes' else 0)
+    smoking_status_unknown = float(1 if smoking_status == 'unknown' else 0)
 
    
     # prediction = 0 
@@ -215,7 +216,7 @@ def predict_heart_stroke():
     # Make the prediction
     prediction = loaded_model.predict(X_scaled)[0]
 
-    prediction = "${0:,.2f}".format(prediction)
+    prediction = "{0:,.2f}".format(prediction)
 
     print(prediction)
  
