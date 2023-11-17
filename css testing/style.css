@@ -27,6 +27,7 @@ p {
 .green {
     background: #7be787;
     z-index: -2;
+    background-size: cover;
 }
 
 .pink {
@@ -38,7 +39,7 @@ p {
 }
 
 .spacer {
-    aspect-ratio: 960/270;
+    aspect-ratio: 960/90;
     width: 100%;
     background-repeat: no-repeat;
     background-position: center;
