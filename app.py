@@ -140,9 +140,7 @@ def directors(director):
 
 @app.route("/model", methods=["POST"])
 def predict_heart_stroke():
-    print('test')
 
-    unnamed = 0
     # Get the input values from the form
     age = float(request.form["age"])
 
@@ -160,14 +158,14 @@ def predict_heart_stroke():
      # Map categorical features to binary values
     gender = request.form["gender"]
     
-    gender_m = 1 if gender == 'Male' else 0
+    gender_m = float(1 if gender == 'Male' else 0)
     gender_f = 1 if gender == 'Female' else 0
     gender_o = 1 if gender == 'Other' else 0
 
     ever_married = request.form["ever-married"]
 
-    ever_married_yes = 1 if ever_married == 'Yes' else 0
-    ever_married_no = 1 if ever_married == 'No' else 0
+    ever_married_yes = 1 if ever_married == 'yes' else 0
+    ever_married_no = 1 if ever_married == 'no' else 0
 
     work_type = request.form["work-type"]
     
@@ -191,24 +189,31 @@ def predict_heart_stroke():
     smoking_status_unknown = 1 if smoking_status == 'unknown' else 0
 
    
-    prediction = 0 
+    # prediction = 0 
 
     # Create a feature vector for prediction
-    X = [[unnamed, age, hypertension, heart_disease, avg_glucose_level, bmi, gender_f, gender_m, gender_o, 
-        ever_married_no, ever_married_yes, work_type_never_worked, work_type_private, work_type_government_job, 
+    X = [[age, hypertension, heart_disease, avg_glucose_level, bmi, gender_f, gender_m, gender_o, 
+        ever_married_no, ever_married_yes, work_type_government_job, work_type_never_worked, work_type_private, 
         work_type_self_employed, work_type_children, 
         residence_type_rural, residence_type_urban, smoking_status_formerly_smoked, smoking_status_never_smoked, 
         smoking_status_smokes, smoking_status_unknown]]
     
     print(X)
+    print(len(X[0]))
+
 
     # Load the trained heart stroke prediction model
-    filename = './models/svm_model (2).sav' # Replace model with actual file name
+    filename = './models/svm_model (3).sav' # Replace model with actual file name
     loaded_model = pickle.load(open(filename, 'rb'))
 
-  
+    # Load the trained heart stroke prediction model
+    filename = './models/svm__scalar_model.sav' # Replace model with actual file name
+    X_Scaler = pickle.load(open(filename, 'rb'))
+
+    X_scaled = X_Scaler.transform(X)
+
     # Make the prediction
-    prediction = loaded_model.predict(X)[0]
+    prediction = loaded_model.predict(X_scaled)[0]
 
     prediction = "${0:,.2f}".format(prediction)
 
