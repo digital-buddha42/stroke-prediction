@@ -204,7 +204,7 @@ def predict_heart_stroke():
 
 
     # Load the trained heart stroke prediction model
-    filename = './models/svm_model (3).sav' # Replace model with actual file name
+    filename = './models/svm_model.sav' # Replace model with actual file name
     loaded_model = pickle.load(open(filename, 'rb'))
 
     # Load the trained heart stroke prediction model
@@ -212,9 +212,11 @@ def predict_heart_stroke():
     X_Scaler = pickle.load(open(filename, 'rb'))
 
     X_scaled = X_Scaler.transform(X)
+    print(X_scaled)
 
     # Make the prediction
     prediction = loaded_model.predict(X_scaled)[0]
+    # prediction2 =loaded_model.predict_proba(X_scaled)[0]
 
     prediction = "{0:,.2f}".format(prediction)
 
