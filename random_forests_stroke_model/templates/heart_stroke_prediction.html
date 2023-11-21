@@ -43,25 +43,54 @@
     <h1>Stroke Prediction</h1>
     <form id="strokeForm">
         <label for="gender">Gender (Male/Female/Other): </label>
-        <input type="text" id="gender" name="gender"><br><br>
+        <select name="gender" id="gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select> 
+
+        <br><br>
         
         <label for="age">Age: </label>
         <input type="number" id="age" name="age"><br><br>
         
-        <label for="hypertension">Hypertension (1 for Yes, 0 for No): </label>
-        <input type="number" id="hypertension" name="hypertension"><br><br>
+        <label for="hypertension">Hypertension: </label>
+        <select name="hypertension" id="hypertension">
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+        <br><br>
         
-        <label for="heartDisease">Heart Disease (1 for Yes, 0 for No): </label>
-        <input type="number" id="heartDisease" name="heartDisease"><br><br>
+        <label for="heartDisease">Heart Disease: </label>
+        <select name="heartDisease" id="heartDisease">
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+        <br><br>
         
-        <label for="everMarried">Ever Married (Yes/No): </label>
-        <input type="text" id="everMarried" name="everMarried"><br><br>
+        <label for="everMarried">Ever Married: </label>
+        <select name="everMarried" id="everMarried">
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+        <br><br>
         
         <label for="workType">Work Type: </label>
-        <input type="text" id="workType" name="workType"><br><br>
+        <select name="workType" id="workType">
+          <option value="Children">Children</option>
+          <option value="Govt_job">Government Job</option>
+          <option value="Never Worked">Never Worked</option>
+          <option value="Private">Private</option>
+          <option value="Self-employed">Self Employed</option>
+        </select>
+        <br><br>
         
-        <label for="residenceType">Residence Type (Urban/Rural): </label>
-        <input type="text" id="residenceType" name="residenceType"><br><br>
+        <label for="residenceType">Residence Type: </label>
+        <select name="residenceType" id="residenceType">
+          <option value="Rural">Rural</option>
+          <option value="Urban">Urban</option>
+        </select>
+
+        <br><br>
         
         <label for="avgGlucoseLevel">Average Glucose Level: </label>
         <input type="number" id="avgGlucoseLevel" name="avgGlucoseLevel"><br><br>
@@ -70,7 +99,13 @@
         <input type="number" id="bmi" name="bmi"><br><br>
         
         <label for="smokingStatus">Smoking Status: </label>
-        <input type="text" id="smokingStatus" name="smokingStatus"><br><br>
+        <select name="smokingStatus" id="smokingStatus">
+          <option value="formerly smoked">Formerly Smoked</option>
+          <option value="never smoked">Never Smoked</option>
+          <option value="smokes">Smokes</option>
+          <option value="unknown">Unknown</option>
+        </select>
+        <br><br>
         
         <input type="button" value="Predict" onclick="predictStroke()">
     </form>
