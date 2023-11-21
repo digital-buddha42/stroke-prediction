@@ -4,6 +4,20 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+# Web site
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+@app.route("/data")
+def data():
+
+    return render_template("data.html")
+
+@app.route("/heart_stroke_prediction")
+def stroke():
+    return render_template("heart_stroke_prediction.html")
+
 
 # Loading the pre-trained model and making predictions on the input data.
 # Function to predict stroke likelihood
