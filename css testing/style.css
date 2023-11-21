@@ -1,3 +1,4 @@
+/* General formatting */
 body {
     margin: 0;
     padding: 0;
@@ -7,11 +8,12 @@ body {
     overflow-x: hidden;
 }
 
+/* Content formatting */
 section {
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     min-height: 400px;
     padding: 100px 20vw;
 }
@@ -20,9 +22,6 @@ p {
     z-index: 1;
     position: relative;
 }
-.blue {
-    background: #1eb5fb;
-}
 
 .green {
     background: #7be787;
@@ -30,14 +29,7 @@ p {
     background-size: cover;
 }
 
-.pink {
-    background: #f90487;
-}
-
-.dark {
-    background: #0f0f10;
-}
-
+/* SVG page border */
 .spacer {
     aspect-ratio: 960/90;
     width: 100%;
@@ -64,6 +56,7 @@ p {
     transform: rotate(180deg);
 }
 
+/* Animated blobs */
 .blob-motion {
     position: absolute;
     transform: translateY(-20%);
@@ -79,7 +72,7 @@ svg {
     align-items: center;
 }
 
-/* Style the sidebar - fixed full height */
+/* Sidebar formatting */
 .sidebar {
     height: 100%;
     width: 160px;
@@ -92,7 +85,7 @@ svg {
     padding-top: 16px;
   }
   
-  /* Style sidebar links */
+  /* Sidebar links */
   .sidebar a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
@@ -112,8 +105,3 @@ svg {
     padding: 0px 10px;
   }
   
-  /* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
-  @media screen and (max-height: 450px) {
-    .sidebar {padding-top: 15px;}
-    .sidebar a {font-size: 18px;}
-  }
