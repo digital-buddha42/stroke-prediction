@@ -21,11 +21,7 @@ Base = automap_base()
 # reflect the tables
 Base.prepare(engine, reflect=True)
 
-# Save reference to the table
-print(Base.classes.keys())
 
-Movies = Base.classes.movies
-Actors = Base.classes.actors
 
 #################################################
 # Flask Setup
