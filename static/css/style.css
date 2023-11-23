@@ -129,3 +129,42 @@ subsection {
   margin-left: 150px;
   padding: 10px;
 }
+
+.btn-primary {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  width: 150px;
+  height: 100%;
+  background: #7be787;
+  border: 2px solid #7be787;
+  border-radius: 8px;
+  font-size: 19px;
+  color: #181D20;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  z-index: 1;
+  overflow: hidden;
+  transition: .5s;
+}
+.btn-primary:hover {
+  color: #7be787;
+  background: transparent;
+  border: 2px solid #7be787;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #181D20;
+  z-index: -1;
+  transition: .5s;
+}
+.btn-primary:hover::before {
+  width: 100%;
+}
