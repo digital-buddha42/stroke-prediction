@@ -26,6 +26,17 @@ section {
   padding: 100px 20vw;
 }
 
+sectionData {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 400px;
+  margin-left: 11vw;
+  justify-content: center;
+  padding: 10px;
+}
+
 p {
   z-index: 1;
   position: relative;
