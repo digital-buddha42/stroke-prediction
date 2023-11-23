@@ -168,3 +168,12 @@ subsection {
 .btn-primary:hover::before {
   width: 100%;
 }
+
+a {
+  margin: 0;
+  padding: 0;
+  font-family: 'Josefin Sans', sans-serif;
+  color: white;
+  background: #202731;
+  overflow-x: hidden;
+}
