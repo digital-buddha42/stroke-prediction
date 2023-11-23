@@ -27,25 +27,35 @@
     <a href="/heart"> About </a>
   </div>
 
-    <h1 style = "margin-left: 15vw;">Our Data</h1>
-    <sectionData>
-    <p class = "float-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur excepturi, rerum possimus doloremque quasi molestias laboriosam cumque dignissimos debitis incidunt omnis autem expedita alias libero similique. In molestiae soluta assumenda.
-    Molestiae delectus distinctio sunt cum quibusdam ipsam provident reiciendis sequi! Atque impedit ratione sunt! Laborum veniam, labore quis, tenetur tempore ab possimus atque rerum dolores optio porro, quidem architecto dolorum.
-    Aperiam, rerum, sit non nisi eum ad sunt quasi eligendi accusamus laudantium temporibus repudiandae, repellat iste quos eos quo aut cupiditate nesciunt earum nihil? Necessitatibus eius facere sed numquam dignissimos?
-    Dolorem, ipsa. A perferendis, similique, quidem quaerat quod temporibus veritatis aliquam alias repellendus quasi blanditiis nisi veniam. </p>
-    <img src = "../static/css/feature-importance-graph.png" alt = "Feature Importance" class = "rounded float-right" style = "padding-left: 10px;">
+  <h1 style="margin-left: 15vw;">Our Data</h1>
+  <sectionData>
+    <p class="float-left"> Our dataset is comprised of over 5,000 clinical records containing data for 8 different
+      indicators of heart stroke. These indicators span demographic and medical data, from age and gender to average
+      glucose level and history of heart disease. We created several graphs to provide quick visual access to the data,
+      shown below. By clicking through the graphs, you'll see stroke distribution for each of our key indicators. While
+      some distributions are comparatively even, others, such as stroke distribution by history of heart disease are
+      clearly unbalanced.</p>
+    <br>
+    <p class="float-left" style="padding-left: 10px;">We know that not all indicators are created equal, though. We
+      looked at the importance
+      each indicator has when running our model to better understand how the model is working and to provide insight
+      into how risk of stroke can be identified and mitigated. Gender, age, and hypertension are the three indicators
+      with the most importance; while it may be disheartening to find that the two leading indicators are factors
+      outside of your control, it further highlights the importance of managing hypertension to maintain a low risk of
+      stroke.</p>
+    <img src="../static/css/feature-importance-graph.png" alt="Feature Importance" class="rounded float-right"
+      style="padding-left: 10px;">
     </div>
   </sectionData>
   <div class="spacer haikei flip"></div>
   <div class="spacer haikei"></div>
   <subsection>
-  <h3>Stroke Risk at a Glance</h3>
-</subsection>
-  <div class = 'tableau'>
-    <div class='tableauPlaceholder' id='viz1700532049172' style='position: relative'><noscript><a href='#'><img
-      alt=' '
-      src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;St&#47;StrokeFactorAnalysis&#47;StrokeDistributionbyGender&#47;1_rss.png'
-      style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
+    <h3>Stroke Risk at a Glance</h3>
+  </subsection>
+  <div class='tableau'>
+    <div class='tableauPlaceholder' id='viz1700532049172' style='position: relative'><noscript><a href='#'><img alt=' '
+            src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;St&#47;StrokeFactorAnalysis&#47;StrokeDistributionbyGender&#47;1_rss.png'
+            style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
         <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
         <param name='embed_code_version' value='3' />
         <param name='site_root' value='' />
@@ -60,7 +70,7 @@
         <param name='display_overlay' value='yes' />
         <param name='display_count' value='yes' />
         <param name='language' value='en-US' />
-    </object></div>
+      </object></div>
     <script
       type='text/javascript'>                    var divElement = document.getElementById('viz1700532049172'); var vizElement = divElement.getElementsByTagName('object')[0]; vizElement.style.width = '100%'; vizElement.style.height = (divElement.offsetWidth * 0.42) + 'px'; var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
   </div>
