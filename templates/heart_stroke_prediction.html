@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stroke Predictor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/kute.js@2.1.2/dist/kute.min.js"></script>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+  
+<body>
+  <div class="header haikei"></div>
+  <div class="sidebar">
+    <a href="/"> Home </a>
+    <a href="/data"> Visualizations </a>
+    <a href="/heart_stroke_prediction"> Calculator </a>
+    <a href="/heart"> About </a>
+  </div>
+  
+  <section>
+  
+    <h1>Stroke Risk Calculator</h1>
+    <p>Enter your information below to learn your risk of stroke.</p>
+
+    <div class="row" >
+      <div class="col-md-6">
+
+        <form method="POST" action="/model" role="form", name="petform">
+
+          <label for="gender">Gender:</label>
+          <br>
+  
+          <select name="gender" id="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>     
+          
+          <br><br>
+
+           <div class="form-group">
+              <label for="inputLat">Age:</label>
+              <input type="text" class="form-control" id="inputAge" name="age" placeholder="Age">
+          </div>
+
+          <br>
+
+          <label for="hypertension">Hypertension:</label>
+          <br>
+
+          <select name="hypertension" id="hypertension">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select>     
+          
+          <br><br>
+
+          <label for="heart-disease">Heart Disease:</label>
+          <br>
+
+          <select name="heart-disease" id="heart-disease">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select> 
+
+          <br><br>
+
+          <label for="ever-married">Marriage History:</label>
+          <br>
+
+          <select name="ever-married" id="ever-married">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+
+          <br><br>
+
+          <label for="work-type">Employment Type:</label>
+          <br>
+
+          <select name="work-type" id="work-type">
+            <option value="children">Children</option>
+            <option value="government-job">Government Job</option>
+            <option value="never-worked">Never Worked</option>
+            <option value="private">Private</option>
+            <option value="self-employed">Self-Employed</option>
+          </select>
+
+          <br><br>
+
+          <label for="residence-type">Residence Type:</label>
+          <br>
+
+          <select name="residence-type" id="residence-type">
+            <option value="rural">Rural</option>
+            <option value="urban">Urban</option>
+          </select>
+
+          <br><br>
+
+          <div class="form-group">
+              <label for="inputName">Average Glucose Level:</label>
+              <input type="text" class="form-control" id="inputGlucose" name="avg_glucose_level" placeholder="Glucose">
+          </div>
+
+          <br>
+          <div class="form-group">
+              <label for="inputLat">BMI:</label>
+              <input type="text" class="form-control" id="inputBMI" name="bmi" placeholder="BMI">
+          </div>
+
+          <br>
+
+          <label for="smoking_status">Smoking History:</label>
+          <br>
+
+          <select name="smoking_status" id="smoking_status">
+            <option value="formerly-smoked">Formerly Smoked</option>
+            <option value="never-smoked">Never Smoked</option>
+            <option value="smokes">Smokes</option>
+            <option value="unknown">Unknown</option>
+          </select>
+
+          <br><br>
+
+          <br>
+          <input type="submit" value="Submit" class="btn btn-primary">
+
+        </form>
+
+      </div>
+      <div class="col-md-6 prediction">
+
+        {% if prediction %} 
+            Are you likely to have a stroke? {{prediction}}
+        {% endif %}
+
+      </div>
+
+    </div>
+  </section>
+
+  <br>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  </body>
+  
+  </html>
+  

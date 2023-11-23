@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stroke Predictor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/kute.js@2.1.2/dist/kute.min.js"></script>
+  <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+
+<body>
+  <div class="header haikei"></div>
+  <div class="sidebar">
+    <a href="/"> Home </a>
+    <a href="/data"> Visualizations</a>
+    <a href="/heart_stroke_prediction"> Calculator </a>
+    <a href="/heart"> About </a>
+  </div>
+
+  <section>
+    <h1>Our Data</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur excepturi, rerum possimus doloremque quasi molestias laboriosam cumque dignissimos debitis incidunt omnis autem expedita alias libero similique. In molestiae soluta assumenda.
+    Molestiae delectus distinctio sunt cum quibusdam ipsam provident reiciendis sequi! Atque impedit ratione sunt! Laborum veniam, labore quis, tenetur tempore ab possimus atque rerum dolores optio porro, quidem architecto dolorum.
+    Aperiam, rerum, sit non nisi eum ad sunt quasi eligendi accusamus laudantium temporibus repudiandae, repellat iste quos eos quo aut cupiditate nesciunt earum nihil? Necessitatibus eius facere sed numquam dignissimos?
+    Dolorem, ipsa. A perferendis, similique, quidem quaerat quod temporibus veritatis aliquam alias repellendus quasi blanditiis nisi veniam. Accusantium soluta enim pariatur iusto corporis, perspiciatis aliquid, beatae, molestiae consequuntur reiciendis inventore.
+    Est, vero? Totam quas nisi sint fugit doloremque repellat labore amet nostrum reprehenderit itaque porro voluptatem quae delectus non doloribus dolore perspiciatis veniam magni quis, blanditiis error magnam quia quidem!
+    Delectus officiis eum ullam distinctio recusandae molestias, accusamus dignissimos pariatur harum est reiciendis libero maxime laudantium deserunt error itaque consequuntur eius molestiae culpa autem. Ad nobis veritatis assumenda est fuga?
+    Quae quisquam doloremque unde sequi labore, sapiente est itaque non tempore provident assumenda eius magni modi laboriosam ipsum corrupti et pariatur repudiandae necessitatibus dolor, impedit minus enim neque? Doloremque, odit.
+    Eum iure vitae atque temporibus harum placeat qui, nulla eos cupiditate id fugit veritatis. Repudiandae, cumque? Maiores veritatis nobis laudantium impedit ut fugit blanditiis hic, aliquam aperiam maxime numquam architecto.</p>
+  </section>
+  <div class="spacer haikei flip"></div>
+  <div class="spacer haikei"></div>
+  <subsection>
+  <h3>Stroke Risk at a Glance</h3>
+</subsection>
+  <div class = 'tableau'>
+    <div class='tableauPlaceholder' id='viz1700532049172' style='position: relative'><noscript><a href='#'><img
+      alt=' '
+      src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;St&#47;StrokeFactorAnalysis&#47;StrokeDistributionbyGender&#47;1_rss.png'
+      style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
+        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+        <param name='embed_code_version' value='3' />
+        <param name='site_root' value='' />
+        <param name='name' value='StrokeFactorAnalysis&#47;StrokeDistributionbyGender' />
+        <param name='tabs' value='yes' />
+        <param name='toolbar' value='yes' />
+        <param name='static_image'
+          value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;St&#47;StrokeFactorAnalysis&#47;StrokeDistributionbyGender&#47;1.png' />
+        <param name='animate_transition' value='yes' />
+        <param name='display_static_image' value='yes' />
+        <param name='display_spinner' value='yes' />
+        <param name='display_overlay' value='yes' />
+        <param name='display_count' value='yes' />
+        <param name='language' value='en-US' />
+    </object></div>
+    <script
+      type='text/javascript'>                    var divElement = document.getElementById('viz1700532049172'); var vizElement = divElement.getElementsByTagName('object')[0]; vizElement.style.width = '100%'; vizElement.style.height = (divElement.offsetWidth * 0.42) + 'px'; var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+  <script src="https:////cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+</body>
+
+</html>
