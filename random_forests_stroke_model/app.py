@@ -46,9 +46,12 @@ def predict_stroke(data):
     # Convert categoricals to one-hot encoded dummy variables
     # Make predictions
     prediction = model.predict(input_data)
+    probability = model.predict_proba(input_data)
 
     # Predicted class: 1 for stroke, 0 for no stroke
-    return prediction[0]
+    print(probability[0][1])
+    return prediction[0], probability[0][1]
+    
 
 # This method is called when the app starts running on the server.
 @app.route('/')
@@ -60,11 +63,12 @@ def index():
 def predict():
     if request.method == 'POST':
         user_input = request.form.to_dict()
-        prediction = predict_stroke(user_input)
+        prediction, probability = predict_stroke(user_input)
+        
         if prediction == 1:
-            return "Based on the provided information, you are likely to have a stroke."
+            return f"Based on the provided information, you are likely to have a stroke. The probability of having a stroke is {100*round(probability,2)}%"
         else:
-            return "Based on the provided information, you are not likely to have a stroke."
+            return f"Based on the provided information, you are not likely to have a stroke. The probability of having a stroke is {100*round(probability,2)}%"
 
 if __name__ == '__main__':
     app.run(debug=True)
