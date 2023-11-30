@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stroke Predictor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/kute.js@2.1.2/dist/kute.min.js"></script>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+  <div class="header haikei"></div>
+  <div class="sidebar">
+    <a href="/"> Home </a>
+    <a href="/data"> Visualizations </a>
+    <a href="/heart_stroke_prediction"> Calculator </a>
+  </div>
+  
+  
+  <h1 style="margin-left: 15vw;">Stroke Risk Calculator</h1>
+    <p style="margin-left: 15vw;">Enter your information below to learn your risk of stroke.</p>
+
+    <calculator>
+    <form id="strokeForm">
+        <label for="gender">Gender (Male/Female/Other): </label>
+        <select name="gender" id="gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select> 
+
+        <br><br>
+        
+        <label for="age">Age: </label>
+        <input type="number" id="age" name="age"><br><br>
+        
+        <label for="hypertension">Hypertension: </label>
+        <select name="hypertension" id="hypertension">
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+        <br><br>
+        
+        <label for="heartDisease">Heart Disease: </label>
+        <select name="heartDisease" id="heartDisease">
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+        <br><br>
+        
+        <label for="everMarried">Ever Married: </label>
+        <select name="everMarried" id="everMarried">
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+        <br><br>
+        
+        <label for="workType">Work Type: </label>
+        <select name="workType" id="workType">
+          <option value="Children">Children</option>
+          <option value="Govt_job">Government Job</option>
+          <option value="Never Worked">Never Worked</option>
+          <option value="Private">Private</option>
+          <option value="Self-employed">Self Employed</option>
+        </select>
+        <br><br>
+        
+        <label for="residenceType">Residence Type: </label>
+        <select name="residenceType" id="residenceType">
+          <option value="Rural">Rural</option>
+          <option value="Urban">Urban</option>
+        </select>
+
+        <br><br>
+        
+        <label for="avgGlucoseLevel">Average Glucose Level: </label>
+        <input type="number" id="avgGlucoseLevel" name="avgGlucoseLevel"><br><br>
+        
+        <label for="bmi">BMI: </label>
+        <input type="number" id="bmi" name="bmi"><br><br>
+        
+        <label for="smokingStatus">Smoking Status: </label>
+        <select name="smokingStatus" id="smokingStatus">
+          <option value="formerly smoked">Formerly Smoked</option>
+          <option value="never smoked">Never Smoked</option>
+          <option value="smokes">Smokes</option>
+          <option value="unknown">Unknown</option>
+        </select>
+        <br><br>
+        
+        <input type="button" value="Predict" onclick="predictStroke()" class = "btn-primary">
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        // This creates a JavaScript function named predictStroke.
+        function predictStroke() {
+            // select the form element with the id strokeForm and create a new FormData object from it.
+            var formData = new FormData(document.getElementById('strokeForm'));
+            // send a POST request to the /predict endpoint of the Flask app.
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            // convert the response to text and then replace the contents of the result paragraph with the response text.
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('result').innerHTML = data;
+            });
+        }
+        // This javascript code captures form data, sends it to the Flask app, and displays the result.
+    </script>
+  </calculator>
+</body>
+</html>
